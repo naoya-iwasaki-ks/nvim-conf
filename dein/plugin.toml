@@ -1,0 +1,283 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+# color
+[[plugins]]
+repo = 'morhetz/gruvbox'
+hook_add = '''
+  if !has("gui_running")
+    set t_Co=256
+    let &t_AB="\e[48;5;%dm"
+    let &t_AF="\e[38;5;%dm"
+    colorscheme gruvbox
+    set background=dark
+  endif
+'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+
+# airline
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+depends = ['vim-airline-themes', 'gruvbox']
+hook_add = '''
+  set laststatus=1
+  let g:airline_powerline_fonts=1
+  let g:airline#extensions#whitespace#mixed_indent_algo = 1
+  let g:airline_theme = 'gruvbox'
+
+  let g:airline#extensions#ale#enabled = 1
+
+  if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+  endif
+
+  let g:airline#extensions#default#layout = [
+    \ [ 'a', 'b', 'c' ],
+    \ [ 'x', 'y' ]
+    \ ]
+
+  " unicode symbols
+  let g:airline_left_sep = '»'
+  let g:airline_left_sep = '▶'
+  let g:airline_right_sep = '«'
+  let g:airline_right_sep = '◀'
+  let g:airline_symbols.crypt = '🔒'
+  let g:airline_symbols.linenr = '␊'
+  let g:airline_symbols.linenr = '␤'
+  let g:airline_symbols.linenr = '¶'
+  let g:airline_symbols.maxlinenr = '☰'
+  let g:airline_symbols.maxlinenr = ''
+  let g:airline_symbols.branch = '⎇'
+  let g:airline_symbols.paste = 'ρ'
+  let g:airline_symbols.paste = 'Þ'
+  let g:airline_symbols.paste = '∥'
+  let g:airline_symbols.spell = 'Ꞩ'
+  let g:airline_symbols.notexists = '∄'
+  let g:airline_symbols.whitespace = 'Ξ'
+
+  " powerline symbols
+  let g:airline_left_sep = ''
+  let g:airline_left_alt_sep = ''
+  let g:airline_right_sep = ''
+  let g:airline_right_alt_sep = ''
+  let g:airline_symbols.branch = ''
+  let g:airline_symbols.readonly = ''
+  let g:airline_symbols.linenr = ''
+'''
+
+# lsp
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+build = 'coc#util#install()'
+hook_add = '''
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+      
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+inoremap <expr><C-k> pumvisible()? "\<C-y>" : "\<C-g>u\<CR>"
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+" Use K for show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+'''
+
+# [[plugins]]
+# repo = 'prabirshrestha/vim-lsp'
+# hook_add = '''
+# let g:lsp_log_verbose = 1
+# let g:lsp_log_file = expand('~/.cache/vim-lsp.log')
+# 
+# if executable('pyls')
+#   au User lsp_setup call lsp#register_server({
+#     \ 'name': 'pyls',
+#     \ 'cmd': { server_info -> ['pyls'] },
+#     \ 'whitelist': ['python'],
+#     \ 'workspace_config': {'pyls': {'plugins': {
+#     \   'pycodestyle': {'enabled': v:false},
+#     \   'jedi_definition': {'follow_imports': v:true, 'follow_builtin_imports': v:true},}}}
+#     \})
+# endif
+# 
+# if executable('typescript-language-server')
+#   au User lsp_setup call lsp#register_server({
+#     \ 'name': 'typescript-language-server',
+#     \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+#     \ 'whitelist': ['typescript'],
+#     \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+#     \ })
+# endif
+# 
+# if executable('typescript-language-server')
+#   au User lsp_setup call lsp#register_server({
+#     \ 'name': 'javascript support using typescript-language-server',
+#     \ 'cmd': { server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+#     \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
+#     \ 'whitelist': ['javascript', 'javascript.jsx', 'javascriptreact']
+#     \ })
+# endif
+# 
+# if executable('vls')
+#   au User lsp_setup call lsp#register_server({
+#     \ 'name': 'vue-language-server',
+#     \ 'cmd': {server_info->['vls']},
+#     \ 'whitelist': ['vue'],
+#     \ 'initialization_options': {
+#     \    "config": {
+#     \         "vetur": {
+#     \              "useWorkspaceDependencies": "false",
+#     \              "validation": {
+#     \                  "template": "true",
+#     \                  "style": "true",
+#     \                  "script": "true"
+#     \              },
+#     \              "completion": {
+#     \                  "autoImport": "false",
+#     \                  "useScaffoldSnippets": "false",
+#     \                  "tagCasing": "kebab"
+#     \              },
+#     \              "format": {
+#     \                  "defaultFormatter": {
+#     \                      "js": "none",
+#     \                      "ts": "none"
+#     \                  },
+#     \                  "defaultFormatterOptions": {},
+#     \                  "scriptInitialIndent": "false",
+#     \                  "styleInitialIndent": "false"
+#     \              }
+#     \          },
+#     \          "css": {},
+#     \          "html": {
+#     \              "suggest": {}
+#     \          },
+#     \          "javascript": {
+#     \              "format": {}
+#     \          },
+#     \          "typescript": {
+#     \              "format": {}
+#     \          },
+#     \          "emmet": {},
+#     \          "stylusSupremacy": {}
+#     \        }
+#     \     }
+#     \ })
+# endif
+# 
+# function! s:lsp_activate() abort
+#   let g:lsp_signs_enabled = 1
+#   let g:lsp_diagnostics_enabled = 1
+#   let g:lsp_diagnostics_echo_cursor = 1
+#   let g:lsp_virtual_text_enabled = 1
+#   let g:lsp_signs_error = {'text': '✗'}
+#   let g:lsp_signs_warning = {'text': '‼'}
+#   let g:lsp_signs_information = {'text': 'i'}
+#   let g:lsp_signs_hint = {'text': '?'}
+# 
+#   setlocal omnifunc=lsp#complete
+#   setlocal signcolumn=yes
+#   nnoremap <buffer><silent> gd :<C-u>LspDefinition<CR>
+#   nnoremap <buffer><silent> gD :<C-u>LspReferences<CR>
+#   nnoremap <buffer><silent> gs :<C-u>LspDocumentSymbol<CR>
+#   nnoremap <buffer><silent> gS :<C-u>LspWorkspaceSymbol<CR>
+#   nnoremap <buffer><silent> gQ :<C-u>LspDocumentFormat<CR>
+#   vnoremap <buffer><silent> gQ :LspDocumentRangeFormat<CR>
+#   nnoremap <buffer><silent> K :<C-u>LspHover<CR>
+#   nnoremap <buffer><silent> <F1> :<C-u>LspImplementation<CR>
+#   nnoremap <buffer><silent> <f2> :<C-u>LspRename<CR>
+# endfunction
+# '''
+
+[[plugins]]
+repo = 'lilydjwg/colorizer'
+
+#[[plugins]]
+#repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+noremap <C-n> :NERDTreeToggle<CR>
+'''
+
+# linter
+# [[plugins]]
+# repo = 'w0rp/ale'
+# hook_add = '''
+# let g:ale_lint_on_enter = 0
+# let g:ale_lint_on_save = 1
+# let g:ale_lint_on_text_changed = 0
+# let g:ale_lintOon_insert_leave = 0
+# let g:ale_linters = {
+#     \ 'python': ['flake8'],
+#     \ }
+# 
+# let g:ale_sign_error = '⨉'
+# let g:ale_sign_warning = '⚠'
+# 
+# let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+# let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+# 
+# augroup compileflag-text
+#     autocmd!
+#     autocmd BufNewFile,BufReadPost * call s:compileflag_text(expand('<afile>:p:h'))
+# augroup END
+# 
+# function! s:compileflag_text(loc)
+#     let files = findfile('compile_flags.txt', escape(a:loc, ' ') . ';', -1)
+#     for i in reverse(filter(files, 'filereadable(v:val)'))
+#         let g:ale_cpp_clang_options = system("cat " . i . "| tr '\\n' ' '")
+#         let g:ale_cpp_gcc_options = system("cat " . i . "| tr '\\n' ' '")
+#     endfor
+# endfunction
+# '''
+
+# polyglot
+[[plugins]]
+repo = 'sheerun/vim-polyglot'
+
+# git
+[[plugins]]
+repo = "airblade/vim-gitgutter"
+
+[[plugins]]
+repo = 'tpope/vim-rhubarb'
+depends = ['vim-gitgutter']
+
+[[plugins]]
+repo = "tpope/vim-fugitive"

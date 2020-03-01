@@ -1,0 +1,6 @@
+{
+  "suggest.timeout": 5000,
+  "diagnostic.refreshAfterSave": true,
+  "diagnostic.errorSign": ">>",
+  "diagnostic.warningSign": "!!"
+}
