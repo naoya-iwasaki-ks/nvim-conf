@@ -224,12 +224,6 @@ endfunction
 # '''
 
 [[plugins]]
-repo = 'lilydjwg/colorizer'
-
-#[[plugins]]
-#repo = 'Shougo/context_filetype.vim'
-
-[[plugins]]
 repo = 'scrooloose/nerdtree'
 hook_add = '''
 noremap <C-n> :NERDTreeToggle<CR>

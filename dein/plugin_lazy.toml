@@ -58,11 +58,6 @@ repo = 'cohama/lexima.vim'
 depends = ['context_filetype.vim']
 on_event = 'InsertEnter'
 
-# jsx-pretty
-[[plugins]]
-repo = 'maxmellon/vim-jsx-pretty'
-on_ft = ['jsx']
-
 # JsDoc
 [[plugins]]
 repo = 'heavenshell/vim-jsdoc'
