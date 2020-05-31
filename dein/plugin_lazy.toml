@@ -67,7 +67,7 @@ on_ft = ['javascript', 'jsx', 'typescript']
 [[plugins]]
 repo = 'mattn/emmet-vim'
 depends = ['context_filetype.vim']
-on_ft = ['vue', 'jsx', 'html', 'sass', 'scss', 'css']
+on_ft = ['vue', 'javascriptreact', 'html', 'sass', 'scss', 'css']
 hook_source = '''
 imap <C-e> <Plug>(emmet-expand-abbr)
 '''
