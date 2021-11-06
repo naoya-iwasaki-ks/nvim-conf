@@ -33,6 +33,9 @@ set isk+=-
 let g:python_host_prog = '/usr/bin/python2'
 let g:python3_host_prog = '/usr/local/bin/python3'
 
+" html
+let html_no_rendering = 1
+
 " sql
 let g:omni_sql_no_default_maps = 1
 
