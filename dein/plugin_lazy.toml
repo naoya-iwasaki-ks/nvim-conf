@@ -61,13 +61,13 @@ on_event = 'InsertEnter'
 # JsDoc
 [[plugins]]
 repo = 'heavenshell/vim-jsdoc'
-on_ft = ['javascript', 'jsx', 'typescript']
+on_ft = ['javascript', 'jsx', 'typescript', 'typescriptreact']
 
 # emmet
 [[plugins]]
 repo = 'mattn/emmet-vim'
 depends = ['context_filetype.vim']
-on_ft = ['vue', 'javascriptreact', 'html', 'sass', 'scss', 'css']
+on_ft = ['vue', 'javascriptreact', 'typescriptreact', 'html', 'sass', 'scss', 'css', 'ejs']
 hook_source = '''
 imap <C-e> <Plug>(emmet-expand-abbr)
 '''
