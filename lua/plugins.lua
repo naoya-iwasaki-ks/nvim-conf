@@ -36,7 +36,23 @@ require("packer").startup(function()
   use "williamboman/mason.nvim"
   use "williamboman/mason-lspconfig.nvim"
 
-  use "hrsh7th/nvim-cmp"
+  use {
+    "L3MON4D3/LuaSnip",
+    tag = "v<CurrentMajor>.*"
+  }
+
+  use {
+    "hrsh7th/nvim-cmp",
+    config = function()
+      require('config.cmp')
+    end,
+  }
+  use "saadparwaiz1/cmp_luasnip"
+  use {
+    'L3MON4D3/LuaSnip',
+    after = 'nvim-cmp',
+    config = function() require('config.snippets') end,
+  }
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/vim-vsnip"
 

@@ -1,4 +1,7 @@
+local luasnip = require('luasnip')
+
 require('mason').setup()
+
 require('mason-lspconfig').setup_handlers({ function(server)
   local opt = {
     -- -- Function executed when the LSP server startup

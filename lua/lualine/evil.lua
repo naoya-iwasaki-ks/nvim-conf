@@ -141,6 +141,7 @@ ins_left {
 
 ins_both_left {
   'filename',
+  path = 1,
   cond = conditions.buffer_not_empty,
   color = { fg = colors.fg },
 }
