@@ -3,6 +3,11 @@ vim.opt.fenc = "utf-8"
 vim.opt.ambiwidth = "single"
 vim.opt.filetype = "off"
 
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+vim.opt.termguicolors = true
+
 vim.cmd([[
   " Language setting
   set noshowmode

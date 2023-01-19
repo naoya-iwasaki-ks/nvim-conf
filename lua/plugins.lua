@@ -24,12 +24,17 @@ require("packer").startup(function()
   }
 
   use {
-    "scrooloose/nerdtree",
-    opt = true,
-    cmd = "NERDTreeToggle",
-    config = vim.cmd([[
-      noremap <C-n> :NERDTreeToggle<CR>
-    ]])
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons',
+    },
+    tag = 'nightly',
+    config = function()
+      require('config.nvim-tree')
+      vim.cmd([[
+        noremap <C-n> :NvimTreeToggle<CR>
+      ]])
+    end,
   }
 
   use "neovim/nvim-lspconfig"
@@ -37,22 +42,17 @@ require("packer").startup(function()
   use "williamboman/mason-lspconfig.nvim"
 
   use {
-    "L3MON4D3/LuaSnip",
-    tag = "v<CurrentMajor>.*"
-  }
-
-  use {
     "hrsh7th/nvim-cmp",
+    requires = {
+      {'L3MON4D3/LuaSnip'},
+      {'saadparwaiz1/cmp_luasnip'}
+    },
     config = function()
+      require('config.snippets')
       require('config.cmp')
     end,
   }
-  use "saadparwaiz1/cmp_luasnip"
-  use {
-    'L3MON4D3/LuaSnip',
-    after = 'nvim-cmp',
-    config = function() require('config.snippets') end,
-  }
+
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/vim-vsnip"
 
@@ -72,6 +72,9 @@ require("packer").startup(function()
   use {
     "mattn/emmet-vim",
     opt = true,
+    config = vim.cmd([[
+      imap <C-e> <Plug>(emmet-expand-abbr)
+    ]]),
     ft = {"vue", "javascriptreact", "html", "sass", "scss", "css"}
   }
 
