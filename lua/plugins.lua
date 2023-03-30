@@ -45,16 +45,17 @@ require("packer").startup(function()
     "hrsh7th/nvim-cmp",
     requires = {
       {'L3MON4D3/LuaSnip'},
-      {'saadparwaiz1/cmp_luasnip'}
+      {'saadparwaiz1/cmp_luasnip'},
+      {'hrsh7th/cmp-nvim-lsp'},
+      {'hrsh7th/cmp-buffer'},
+      {'hrsh7th/cmp-path'},
+      {'hrsh7th/vim-vsnip'},
     },
     config = function()
       require('config.snippets')
       require('config.cmp')
     end,
   }
-
-  use "hrsh7th/cmp-nvim-lsp"
-  use "hrsh7th/vim-vsnip"
 
   use {
     "sheerun/vim-polyglot",
