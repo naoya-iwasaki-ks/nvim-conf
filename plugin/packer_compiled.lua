@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/Users/nerchan/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/Users/nerchan/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/Users/nerchan/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/Users/nerchan/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/Users/nerchan/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+local package_path_str = "/Users/naoyaiwasakiks/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/Users/naoyaiwasakiks/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/Users/naoyaiwasakiks/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/Users/naoyaiwasakiks/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/Users/naoyaiwasakiks/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -76,161 +76,183 @@ time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   LuaSnip = {
     loaded = true,
-    path = "/Users/nerchan/.local/share/nvim/site/pack/packer/start/LuaSnip",
+    path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
+  },
+  ["cmp-buffer"] = {
+    loaded = true,
+    path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/cmp-buffer",
+    url = "https://github.com/hrsh7th/cmp-buffer"
+  },
+  ["cmp-cmdline"] = {
+    loaded = true,
+    path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/cmp-cmdline",
+    url = "https://github.com/hrsh7th/cmp-cmdline"
   },
   ["cmp-nvim-lsp"] = {
     loaded = true,
-    path = "/Users/nerchan/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
+    path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
+  },
+  ["cmp-path"] = {
+    loaded = true,
+    path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/cmp-path",
+    url = "https://github.com/hrsh7th/cmp-path"
+  },
+  ["cmp-tabnine"] = {
+    loaded = true,
+    path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/cmp-tabnine",
+    url = "https://github.com/tzachar/cmp-tabnine"
   },
   cmp_luasnip = {
     loaded = true,
-    path = "/Users/nerchan/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
+    path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
   ["emmet-vim"] = {
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/Users/nerchan/.local/share/nvim/site/pack/packer/opt/emmet-vim",
+    config = { "" },
+    loaded = true,
+    path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/emmet-vim",
     url = "https://github.com/mattn/emmet-vim"
   },
   fzf = {
     loaded = true,
-    path = "/Users/nerchan/.local/share/nvim/site/pack/packer/start/fzf",
+    path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/fzf",
     url = "https://github.com/junegunn/fzf"
   },
-  ["fzf.vim"] = {
+  ["fzf-lua"] = {
+    config = { "\27LJ\2\n*\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\15config.fzf\frequire\0" },
     loaded = true,
-    path = "/Users/nerchan/.local/share/nvim/site/pack/packer/start/fzf.vim",
-    url = "https://github.com/junegunn/fzf.vim"
+    path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/fzf-lua",
+    url = "https://github.com/ibhagwan/fzf-lua"
   },
-  gruvbox = {
-    config = { "\27LJ\2\n¸\1\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0˜\1        colorscheme gruvbox\n        set t_Co=256\n        let &t_AB=\"\\e[48;5;%dm\"\n        let &t_AF=\"\\e[38;5;%dm\"\n        set background=dark\n      \bcmd\bvim\0" },
+  ["gruvbox-material"] = {
+    config = { "\27LJ\2\n×\2\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0·\2        if has('termguicolors')\n          set termguicolors\n        endif\n\n        set background=dark\n\n        let g:gruvbox_material_background = 'soft'\n        let g:gruvbox_material_foreground = 'material'\n        let g:gruvbox_material_better_performance=1\n\n        colorscheme gruvbox-material\n      \bcmd\bvim\0" },
     loaded = true,
-    path = "/Users/nerchan/.local/share/nvim/site/pack/packer/start/gruvbox",
-    url = "https://github.com/morhetz/gruvbox"
-  },
-  ["kotlin-vim"] = {
-    loaded = false,
-    needs_bufread = true,
-    only_cond = false,
-    path = "/Users/nerchan/.local/share/nvim/site/pack/packer/opt/kotlin-vim",
-    url = "https://github.com/udalov/kotlin-vim"
+    path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/gruvbox-material",
+    url = "https://github.com/sainnhe/gruvbox-material"
   },
   ["lualine.nvim"] = {
     loaded = true,
-    path = "/Users/nerchan/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
-    path = "/Users/nerchan/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
+    path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
     url = "https://github.com/williamboman/mason-lspconfig.nvim"
+  },
+  ["mason-null-ls.nvim"] = {
+    loaded = true,
+    path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/mason-null-ls.nvim",
+    url = "https://github.com/jay-babu/mason-null-ls.nvim"
   },
   ["mason.nvim"] = {
     loaded = true,
-    path = "/Users/nerchan/.local/share/nvim/site/pack/packer/start/mason.nvim",
+    path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
-  nerdtree = {
-    commands = { "NERDTreeToggle" },
-    config = { "" },
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/Users/nerchan/.local/share/nvim/site/pack/packer/opt/nerdtree",
-    url = "https://github.com/scrooloose/nerdtree"
+  ["null-ls.nvim"] = {
+    loaded = true,
+    path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
+    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
   },
   ["nvim-cmp"] = {
-    config = { "\27LJ\2\n*\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\15config.cmp\frequire\0" },
+    config = { "\27LJ\2\nF\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0016\0\0\0'\2\2\0B\0\2\1K\0\1\0\15config.cmp\20config.snippets\frequire\0" },
     loaded = true,
-    path = "/Users/nerchan/.local/share/nvim/site/pack/packer/start/nvim-cmp",
+    path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
-    path = "/Users/nerchan/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+    path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
+  ["nvim-treesitter"] = {
+    loaded = true,
+    path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter"
+  },
   ["nvim-web-devicons"] = {
+    loaded = true,
+    path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    url = "https://github.com/kyazdani42/nvim-web-devicons"
+  },
+  ["oil.nvim"] = {
+    config = { "\27LJ\2\n*\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\15config.oil\frequire\0" },
+    loaded = true,
+    path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/oil.nvim",
+    url = "https://github.com/stevearc/oil.nvim"
+  },
+  ["packer.nvim"] = {
     loaded = false,
     needs_bufread = false,
-    path = "/Users/nerchan/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons",
-    url = "https://github.com/kyazdani42/nvim-web-devicons"
+    path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/opt/packer.nvim",
+    url = "https://github.com/wbthomason/packer.nvim"
+  },
+  ["plenary.nvim"] = {
+    loaded = true,
+    path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+    url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  ["schemastore.nvim"] = {
+    loaded = true,
+    path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/schemastore.nvim",
+    url = "https://github.com/b0o/schemastore.nvim"
+  },
+  ["swagger-preview.nvim"] = {
+    config = { "\27LJ\2\n.\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\19config.swagger\frequire\0" },
+    loaded = true,
+    path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/swagger-preview.nvim",
+    url = "https://github.com/vinnymeller/swagger-preview.nvim"
   },
   ["vim-fugitive"] = {
     loaded = true,
-    path = "/Users/nerchan/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
   },
   ["vim-gitgutter"] = {
     loaded = true,
-    path = "/Users/nerchan/.local/share/nvim/site/pack/packer/start/vim-gitgutter",
+    path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/vim-gitgutter",
     url = "https://github.com/airblade/vim-gitgutter"
-  },
-  ["vim-polyglot"] = {
-    config = { "\27LJ\2\n0\0\0\2\0\3\0\0056\0\0\0009\0\1\0)\1\1\0=\1\2\0K\0\1\0\19csv_no_conceal\6g\bvim\0" },
-    loaded = true,
-    path = "/Users/nerchan/.local/share/nvim/site/pack/packer/start/vim-polyglot",
-    url = "https://github.com/sheerun/vim-polyglot"
   },
   ["vim-rhubarb"] = {
     loaded = true,
-    path = "/Users/nerchan/.local/share/nvim/site/pack/packer/start/vim-rhubarb",
+    path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/vim-rhubarb",
     url = "https://github.com/tpope/vim-rhubarb"
   },
-  ["vim-vsnip"] = {
+  ["vim-styled-components"] = {
     loaded = true,
-    path = "/Users/nerchan/.local/share/nvim/site/pack/packer/start/vim-vsnip",
-    url = "https://github.com/hrsh7th/vim-vsnip"
+    path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/vim-styled-components",
+    url = "https://github.com/styled-components/vim-styled-components"
   }
 }
 
 time([[Defining packer_plugins]], false)
 -- Config for: nvim-cmp
 time([[Config for nvim-cmp]], true)
-try_loadstring("\27LJ\2\n*\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\15config.cmp\frequire\0", "config", "nvim-cmp")
+try_loadstring("\27LJ\2\nF\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0016\0\0\0'\2\2\0B\0\2\1K\0\1\0\15config.cmp\20config.snippets\frequire\0", "config", "nvim-cmp")
 time([[Config for nvim-cmp]], false)
--- Config for: vim-polyglot
-time([[Config for vim-polyglot]], true)
-try_loadstring("\27LJ\2\n0\0\0\2\0\3\0\0056\0\0\0009\0\1\0)\1\1\0=\1\2\0K\0\1\0\19csv_no_conceal\6g\bvim\0", "config", "vim-polyglot")
-time([[Config for vim-polyglot]], false)
--- Config for: gruvbox
-time([[Config for gruvbox]], true)
-try_loadstring("\27LJ\2\n¸\1\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0˜\1        colorscheme gruvbox\n        set t_Co=256\n        let &t_AB=\"\\e[48;5;%dm\"\n        let &t_AF=\"\\e[38;5;%dm\"\n        set background=dark\n      \bcmd\bvim\0", "config", "gruvbox")
-time([[Config for gruvbox]], false)
+-- Config for: fzf-lua
+time([[Config for fzf-lua]], true)
+try_loadstring("\27LJ\2\n*\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\15config.fzf\frequire\0", "config", "fzf-lua")
+time([[Config for fzf-lua]], false)
+-- Config for: emmet-vim
+time([[Config for emmet-vim]], true)
 
--- Command lazy-loads
-time([[Defining lazy-load commands]], true)
-pcall(vim.api.nvim_create_user_command, 'NERDTreeToggle', function(cmdargs)
-          require('packer.load')({'nerdtree'}, { cmd = 'NERDTreeToggle', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'nerdtree'}, { cmd = 'NERDTreeToggle' }, _G.packer_plugins)
-          return vim.fn.getcompletion('NERDTreeToggle ', 'cmdline')
-      end})
-time([[Defining lazy-load commands]], false)
-
-vim.cmd [[augroup packer_load_aucmds]]
-vim.cmd [[au!]]
-  -- Filetype lazy-loads
-time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType kotlin ++once lua require("packer.load")({'kotlin-vim'}, { ft = "kotlin" }, _G.packer_plugins)]]
-vim.cmd [[au FileType vue ++once lua require("packer.load")({'emmet-vim'}, { ft = "vue" }, _G.packer_plugins)]]
-vim.cmd [[au FileType javascriptreact ++once lua require("packer.load")({'emmet-vim'}, { ft = "javascriptreact" }, _G.packer_plugins)]]
-vim.cmd [[au FileType html ++once lua require("packer.load")({'emmet-vim'}, { ft = "html" }, _G.packer_plugins)]]
-vim.cmd [[au FileType sass ++once lua require("packer.load")({'emmet-vim'}, { ft = "sass" }, _G.packer_plugins)]]
-vim.cmd [[au FileType scss ++once lua require("packer.load")({'emmet-vim'}, { ft = "scss" }, _G.packer_plugins)]]
-vim.cmd [[au FileType css ++once lua require("packer.load")({'emmet-vim'}, { ft = "css" }, _G.packer_plugins)]]
-time([[Defining lazy-load filetype autocommands]], false)
-vim.cmd("augroup END")
-vim.cmd [[augroup filetypedetect]]
-time([[Sourcing ftdetect script at: /Users/nerchan/.local/share/nvim/site/pack/packer/opt/kotlin-vim/ftdetect/kotlin.vim]], true)
-vim.cmd [[source /Users/nerchan/.local/share/nvim/site/pack/packer/opt/kotlin-vim/ftdetect/kotlin.vim]]
-time([[Sourcing ftdetect script at: /Users/nerchan/.local/share/nvim/site/pack/packer/opt/kotlin-vim/ftdetect/kotlin.vim]], false)
-vim.cmd("augroup END")
+time([[Config for emmet-vim]], false)
+-- Config for: swagger-preview.nvim
+time([[Config for swagger-preview.nvim]], true)
+try_loadstring("\27LJ\2\n.\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\19config.swagger\frequire\0", "config", "swagger-preview.nvim")
+time([[Config for swagger-preview.nvim]], false)
+-- Config for: gruvbox-material
+time([[Config for gruvbox-material]], true)
+try_loadstring("\27LJ\2\n×\2\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0·\2        if has('termguicolors')\n          set termguicolors\n        endif\n\n        set background=dark\n\n        let g:gruvbox_material_background = 'soft'\n        let g:gruvbox_material_foreground = 'material'\n        let g:gruvbox_material_better_performance=1\n\n        colorscheme gruvbox-material\n      \bcmd\bvim\0", "config", "gruvbox-material")
+time([[Config for gruvbox-material]], false)
+-- Config for: oil.nvim
+time([[Config for oil.nvim]], true)
+try_loadstring("\27LJ\2\n*\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\15config.oil\frequire\0", "config", "oil.nvim")
+time([[Config for oil.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

@@ -2,55 +2,68 @@ vim.cmd.packadd "packer.nvim"
 
 require("packer").startup(function()
   use {
-    "morhetz/gruvbox",
+    'wbthomason/packer.nvim',
+    opt = true
+  }
+
+  use {
+    "sainnhe/gruvbox-material",
     config = function()
-      vim.cmd([[
-        colorscheme gruvbox
-        set t_Co=256
-        let &t_AB="\e[48;5;%dm"
-        let &t_AF="\e[38;5;%dm"
+
+      vim.cmd[[
+        if has('termguicolors')
+          set termguicolors
+        endif
+
         set background=dark
-      ]])
+
+        let g:gruvbox_material_background = 'soft'
+        let g:gruvbox_material_foreground = 'material'
+        let g:gruvbox_material_better_performance=1
+
+        colorscheme gruvbox-material
+      ]]
     end
   }
 
+  use "kyazdani42/nvim-web-devicons"
+
   use {
-    'nvim-lualine/lualine.nvim',
-    requires = {
-      'kyazdani42/nvim-web-devicons',
-      opt = true
-    },
-    options = { theme = 'gruvbox' }
+    "nvim-lualine/lualine.nvim",
+    options = { theme = 'gruvbox-material' }
   }
 
   use {
-    'nvim-tree/nvim-tree.lua',
-    requires = {
-      'nvim-tree/nvim-web-devicons',
-    },
-    tag = 'nightly',
+    "nvim-treesitter/nvim-treesitter",
+  }
+
+  use {
+    "stevearc/oil.nvim",
     config = function()
-      require('config.nvim-tree')
-      vim.cmd([[
-        noremap <C-n> :NvimTreeToggle<CR>
-      ]])
+      require('config.oil')
     end,
   }
 
   use "neovim/nvim-lspconfig"
   use "williamboman/mason.nvim"
   use "williamboman/mason-lspconfig.nvim"
+  use "jay-babu/mason-null-ls.nvim"
+  use {
+    "jose-elias-alvarez/null-ls.nvim",
+    requires = {
+      { 'nvim-lua/plenary.nvim' }
+    },
+  }
 
   use {
     "hrsh7th/nvim-cmp",
     requires = {
-      {'L3MON4D3/LuaSnip'},
-      {'saadparwaiz1/cmp_luasnip'},
-      {'hrsh7th/cmp-nvim-lsp'},
-      {'hrsh7th/cmp-cmdline'},
-      {'hrsh7th/cmp-buffer'},
-      {'hrsh7th/cmp-path'},
-      {'hrsh7th/vim-vsnip'},
+      { 'L3MON4D3/LuaSnip' },
+      { 'saadparwaiz1/cmp_luasnip' },
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'hrsh7th/cmp-cmdline' },
+      { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-path' },
     },
     config = function()
       require('config.snippets')
@@ -59,30 +72,42 @@ require("packer").startup(function()
   }
 
   use {
-    "sheerun/vim-polyglot",
-    config = function()
-      vim.g.csv_no_conceal = 1
-    end
+    "tzachar/cmp-tabnine",
+    run = "./install.sh",
+    dependencies = "hrsh7th/nvim-cmp",
+  }
+
+  use {
+    "styled-components/vim-styled-components",
+    branch = "main"
   }
 
   use "airblade/vim-gitgutter"
   use "tpope/vim-rhubarb"
   use "tpope/vim-fugitive"
   use "junegunn/fzf"
-  use "junegunn/fzf.vim"
+  use {
+    "ibhagwan/fzf-lua",
+    requires = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require('config.fzf')
+    end,
+  }
+
+  use "b0o/schemastore.nvim"
 
   use {
-    "mattn/emmet-vim",
-    opt = true,
-    config = vim.cmd([[
-      imap <C-e> <Plug>(emmet-expand-abbr)
-    ]]),
-    ft = {"vue", "javascriptreact", "html", "sass", "scss", "css"}
+    "vinnymeller/swagger-preview.nvim",
+    run = "npm install -g swagger-ui-watcher",
+    config = function()
+      require('config.swagger')
+    end,
   }
 
   use {
-    "udalov/kotlin-vim",
-    opt = true,
-    ft = {"kotlin"}
+    "mattn/emmet-vim",
+    config = vim.cmd([[
+      imap <C-e> <Plug>(emmet-expand-abbr)
+    ]]),
   }
 end)

@@ -1,4 +1,4 @@
-local custom_gruvbox = require'lualine.themes.gruvbox'
+local custom_gruvbox = require 'lualine.themes.gruvbox'
 
 -- Eviline config for lualine
 -- Author: shadmansaleh
@@ -89,9 +89,10 @@ end
 local function trunc(trunc_width, trunc_len, hide_width, no_ellipsis)
   return function(str)
     local win_width = vim.fn.winwidth(0)
-    if hide_width and win_width < hide_width then return ''
+    if hide_width and win_width < hide_width then
+      return ''
     elseif trunc_width and trunc_len and win_width < trunc_width and #str > trunc_len then
-       return str:sub(1, trunc_len) .. (no_ellipsis and '' or '...')
+      return str:sub(1, trunc_len) .. (no_ellipsis and '' or '...')
     end
     return str
   end
@@ -101,7 +102,7 @@ ins_left {
   function()
     return '▊'
   end,
-  color = { fg = colors.orange }, -- Sets highlighting of component
+  color = { fg = colors.orange },    -- Sets highlighting of component
   padding = { left = 0, right = 1 }, -- We don't need space before this
 }
 
@@ -190,9 +191,15 @@ ins_left {
   color = { fg = colors.fg },
 }
 
+ins_both_right {
+  'filetype',       -- option component same as &encoding in viml
+  cond = conditions.hide_in_width,
+  color = { fg = colors.darkblue },
+}
+
 -- Add components to right sections
 ins_both_right {
-  'o:encoding', -- option component same as &encoding in viml
+  'o:encoding',       -- option component same as &encoding in viml
   fmt = string.upper, -- I'm not sure why it's upper case either ;)
   cond = conditions.hide_in_width,
   color = { fg = colors.green },
