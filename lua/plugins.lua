@@ -9,7 +9,6 @@ require("packer").startup(function()
   use {
     "sainnhe/gruvbox-material",
     config = function()
-
       vim.cmd[[
         if has('termguicolors')
           set termguicolors
@@ -56,9 +55,28 @@ require("packer").startup(function()
   }
 
   use {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    dependencies = "hrsh7th/nvim-cmp",
+    config = function()
+      require('config.copilot')
+    end,
+  }
+
+  use {
+    "zbirenbaum/copilot-cmp",
+    after = { "copilot.lua" },
+    config = function ()
+      require("copilot_cmp").setup()
+    end
+  }
+
+  use {
     "hrsh7th/nvim-cmp",
     requires = {
       { 'L3MON4D3/LuaSnip' },
+      { 'zbirenbaum/copilot-cmp' },
       { 'saadparwaiz1/cmp_luasnip' },
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'hrsh7th/cmp-cmdline' },

@@ -1,4 +1,7 @@
+-- local copilot_comparators = require("copilot_cmp.comparators")
+
 local luasnip = require('luasnip')
+local cmp = require("cmp")
 
 require('mason').setup()
 require("mason-null-ls").setup({
@@ -19,9 +22,9 @@ require('mason-lspconfig').setup_handlers({
       --   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
       --   vim.cmd 'autocmd BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 1000)'
       -- end,
-      capabilities = require('cmp_nvim_lsp').default_capabilities(
-        vim.lsp.protocol.make_client_capabilities()
-      )
+      -- capabilities = require('cmp_nvim_lsp').default_capabilities(
+      --   vim.lsp.protocol.make_client_capabilities()
+      -- )
     }
     require('lspconfig')[server].setup(opt)
   end,
@@ -85,7 +88,7 @@ vim.keymap.set('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>')
 vim.keymap.set('n', 'ge', '<cmd>lua vim.diagnostic.open_float()<CR>')
 vim.keymap.set('n', 'g]', '<cmd>lua vim.diagnostic.goto_next()<CR>')
 vim.keymap.set('n', 'g[', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
-vim.keymap.set('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+vim.keymap.set('n', '<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>')
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -100,8 +103,11 @@ vim.cmd([[
   highlight LspReferenceWrite cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
 ]])
 
---- CMP
-local cmp = require("cmp")
+local has_words_before = function()
+  if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_text(0, line-1, 0, line-1, col, {})[1]:match("^%s*$") == nil
+end
 
 cmp.setup({
   snippet = {
@@ -110,15 +116,16 @@ cmp.setup({
     end
   },
   sources = {
-    { name = "nvim_lsp" },
-    { name = "buffer" },
-    { name = "path" },
-    { name = "luasnip" },
-    { name = "cmp_tabnine" },
+    { name = "luasnip", group_index = 2 },
+    { name = "cmp_tabnine", group_index = 2 },
+    { name = "nvim_lsp", group_index = 2 },
+    { name = "buffer", group_index = 2 },
+    { name = "path", group_index = 2 },
+    { name = "copilot", group_index = 2 },
   },
   mapping = cmp.mapping.preset.insert({
     ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
+      if cmp.visible() and has_words_before() then
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
@@ -139,6 +146,22 @@ cmp.setup({
     ['<C-e>'] = cmp.mapping.abort(),
     ["<CR>"] = cmp.mapping.confirm { select = true },
   }),
+  sorting = {
+    priority_weight = 2,
+    comparators = {
+      -- copilot_comparators.prioritize,
+      cmp.config.compare.offset,
+      -- cmp.config.compare.scopes,
+      cmp.config.compare.exact,
+      cmp.config.compare.score,
+      cmp.config.compare.recently_used,
+      cmp.config.compare.locality,
+      cmp.config.compare.kind,
+      cmp.config.compare.sort_text,
+      cmp.config.compare.length,
+      cmp.config.compare.order,
+    },
+  },
   experimental = {
     ghost_text = false,
   },

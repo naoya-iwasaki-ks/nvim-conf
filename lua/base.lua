@@ -64,9 +64,9 @@ vim.cmd([[
   " vue sucks w/ the context_filetype
   autocmd FileType vue syntax sync fromstart
 
-  silent! autocmd! filetypedetect BufRead,BufNewFile *.tf
-  autocmd BufRead,BufNewFile *.hcl set filetype=hcl
-  autocmd BufRead,BufNewFile .terraformrc,terraform.rc set filetype=hcl
-  autocmd BufRead,BufNewFile *.tf,*.tfvars set filetype=Terraform
-  autocmd BufRead,BufNewFile *.tfstate,*.tfstate.backup set filetype=json
+  " silent! autocmd! filetypedetect BufRead,BufNewFile *.tf
+  " autocmd BufRead,BufNewFile *.hcl set filetype=hcl
+  " autocmd BufRead,BufNewFile .terraformrc,terraform.rc set filetype=hcl
+  " autocmd BufRead,BufNewFile *.tf,*.tfvars set filetype=Terraform
+  " autocmd BufRead,BufNewFile *.tfstate,*.tfstate.backup set filetype=json
 ]])
