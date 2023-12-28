@@ -1,7 +1,5 @@
 require("fzf-lua").setup {
   lsp = {
-    -- make lsp requests synchronous so they work with null-ls
-    async_or_timeout = 3000,
   },
 }
 
@@ -16,4 +14,3 @@ vim.keymap.set('n', '<leader>gb', '<cmd>FzfLua git_branches<CR>')
 vim.keymap.set('n', '<leader>b', '<cmd>FzfLua buffers<CR>')
 vim.keymap.set('n', '<leader><C-r>', '<cmd>FzfLua oldfiles<CR>')
 vim.keymap.set('n', '<leader>d', '<cmd>FzfLua lsp_workspace_diagnostics<CR>')
-

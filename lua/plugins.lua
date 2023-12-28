@@ -9,7 +9,7 @@ require("packer").startup(function()
   use {
     "sainnhe/gruvbox-material",
     config = function()
-      vim.cmd[[
+      vim.cmd [[
         if has('termguicolors')
           set termguicolors
         endif
@@ -46,12 +46,14 @@ require("packer").startup(function()
   use "neovim/nvim-lspconfig"
   use "williamboman/mason.nvim"
   use "williamboman/mason-lspconfig.nvim"
-  use "jay-babu/mason-null-ls.nvim"
   use {
-    "jose-elias-alvarez/null-ls.nvim",
-    requires = {
-      { 'nvim-lua/plenary.nvim' }
+    "nvimdev/guard.nvim",
+    dependencies = {
+      "nvimdev/guard-collection",
     },
+    config = function()
+      require('config.guard')
+    end,
   }
 
   use {
@@ -67,7 +69,7 @@ require("packer").startup(function()
   use {
     "zbirenbaum/copilot-cmp",
     after = { "copilot.lua" },
-    config = function ()
+    config = function()
       require("copilot_cmp").setup()
     end
   }

@@ -4,15 +4,6 @@ local luasnip = require('luasnip')
 local cmp = require("cmp")
 
 require('mason').setup()
-require("mason-null-ls").setup({
-  ensure_installed = {
-    "jsonls",
-    "yamlls",
-  },
-  automatic_installation = false,
-  handlers = {},
-})
-
 require('mason-lspconfig').setup_handlers({
   function(server)
     local opt = {
@@ -28,53 +19,6 @@ require('mason-lspconfig').setup_handlers({
     }
     require('lspconfig')[server].setup(opt)
   end,
-  ['jsonls'] = function(server)
-    require('lspconfig')[server].setup {
-      settings = {
-        json = {
-          schemas = require('schemastore').json.schemas(),
-          validate = { enable = true },
-        },
-      },
-    }
-  end,
-  ['yamlls'] = function(server)
-    require('lspconfig')[server].setup {
-      settings = {
-        yaml = {
-          schemaStore = {
-            enable = false,
-          },
-          schemas = require('schemastore').yaml.schemas(),
-        },
-      },
-    }
-  end
-})
-
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
-require("null-ls").setup({
-  on_attach = function(client, bufnr)
-    if client.supports_method("textDocument/formatting") then
-      vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        group = augroup,
-        buffer = bufnr,
-        callback = function()
-          vim.lsp.buf.format({
-            bufnr = bufnr,
-            filter = function(client)
-              return client.name == "null-ls"
-            end
-          })
-        end,
-      })
-    end
-  end,
-  sources = {
-    -- Anything not supported by mason.
-  }
 })
 
 vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
@@ -106,7 +50,7 @@ vim.cmd([[
 local has_words_before = function()
   if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_text(0, line-1, 0, line-1, col, {})[1]:match("^%s*$") == nil
+  return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
 end
 
 cmp.setup({
@@ -116,17 +60,17 @@ cmp.setup({
     end
   },
   sources = {
-    { name = "luasnip", group_index = 2 },
+    { name = "luasnip",     group_index = 2 },
     { name = "cmp_tabnine", group_index = 2 },
-    { name = "nvim_lsp", group_index = 2 },
-    { name = "buffer", group_index = 2 },
-    { name = "path", group_index = 2 },
-    { name = "copilot", group_index = 2 },
+    { name = "nvim_lsp",    group_index = 2 },
+    { name = "buffer",      group_index = 2 },
+    { name = "path",        group_index = 2 },
+    { name = "copilot",     group_index = 2 },
   },
   mapping = cmp.mapping.preset.insert({
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() and has_words_before() then
-        cmp.select_next_item()
+        cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
       elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
       else
