@@ -125,6 +125,16 @@ require("packer").startup(function()
   }
 
   use {
+    "jiaoshijie/undotree",
+    requires = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = function()
+      require('config.undotree')
+    end,
+  }
+
+  use {
     "mattn/emmet-vim",
     config = vim.cmd([[
       imap <C-e> <Plug>(emmet-expand-abbr)

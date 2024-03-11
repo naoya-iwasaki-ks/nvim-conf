@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/Users/naoyaiwasakiks/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/Users/naoyaiwasakiks/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/Users/naoyaiwasakiks/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/Users/naoyaiwasakiks/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/Users/naoyaiwasakiks/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+local package_path_str = "/Users/naoyaiwasakiks/.cache/nvim/packer_hererocks/2.1.1703358377/share/lua/5.1/?.lua;/Users/naoyaiwasakiks/.cache/nvim/packer_hererocks/2.1.1703358377/share/lua/5.1/?/init.lua;/Users/naoyaiwasakiks/.cache/nvim/packer_hererocks/2.1.1703358377/lib/luarocks/rocks-5.1/?.lua;/Users/naoyaiwasakiks/.cache/nvim/packer_hererocks/2.1.1703358377/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/Users/naoyaiwasakiks/.cache/nvim/packer_hererocks/2.1.1703358377/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -152,6 +152,12 @@ _G.packer_plugins = {
     path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/gruvbox-material",
     url = "https://github.com/sainnhe/gruvbox-material"
   },
+  ["guard.nvim"] = {
+    config = { "\27LJ\2\n,\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\17config.guard\frequire\0" },
+    loaded = true,
+    path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/guard.nvim",
+    url = "https://github.com/nvimdev/guard.nvim"
+  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/lualine.nvim",
@@ -162,20 +168,10 @@ _G.packer_plugins = {
     path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
     url = "https://github.com/williamboman/mason-lspconfig.nvim"
   },
-  ["mason-null-ls.nvim"] = {
-    loaded = true,
-    path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/mason-null-ls.nvim",
-    url = "https://github.com/jay-babu/mason-null-ls.nvim"
-  },
   ["mason.nvim"] = {
     loaded = true,
     path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
-  },
-  ["null-ls.nvim"] = {
-    loaded = true,
-    path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
-    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
   },
   ["nvim-cmp"] = {
     config = { "\27LJ\2\nF\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0016\0\0\0'\2\2\0B\0\2\1K\0\1\0\15config.cmp\20config.snippets\frequire\0" },
@@ -226,6 +222,12 @@ _G.packer_plugins = {
     path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/swagger-preview.nvim",
     url = "https://github.com/vinnymeller/swagger-preview.nvim"
   },
+  undotree = {
+    config = { "\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20config.undotree\frequire\0" },
+    loaded = true,
+    path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/undotree",
+    url = "https://github.com/jiaoshijie/undotree"
+  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/Users/naoyaiwasakiks/.local/share/nvim/site/pack/packer/start/vim-fugitive",
@@ -249,18 +251,30 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: emmet-vim
-time([[Config for emmet-vim]], true)
-
-time([[Config for emmet-vim]], false)
--- Config for: nvim-cmp
-time([[Config for nvim-cmp]], true)
-try_loadstring("\27LJ\2\nF\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0016\0\0\0'\2\2\0B\0\2\1K\0\1\0\15config.cmp\20config.snippets\frequire\0", "config", "nvim-cmp")
-time([[Config for nvim-cmp]], false)
+-- Config for: guard.nvim
+time([[Config for guard.nvim]], true)
+try_loadstring("\27LJ\2\n,\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\17config.guard\frequire\0", "config", "guard.nvim")
+time([[Config for guard.nvim]], false)
+-- Config for: fzf-lua
+time([[Config for fzf-lua]], true)
+try_loadstring("\27LJ\2\n*\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\15config.fzf\frequire\0", "config", "fzf-lua")
+time([[Config for fzf-lua]], false)
 -- Config for: swagger-preview.nvim
 time([[Config for swagger-preview.nvim]], true)
 try_loadstring("\27LJ\2\n.\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\19config.swagger\frequire\0", "config", "swagger-preview.nvim")
 time([[Config for swagger-preview.nvim]], false)
+-- Config for: nvim-cmp
+time([[Config for nvim-cmp]], true)
+try_loadstring("\27LJ\2\nF\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0016\0\0\0'\2\2\0B\0\2\1K\0\1\0\15config.cmp\20config.snippets\frequire\0", "config", "nvim-cmp")
+time([[Config for nvim-cmp]], false)
+-- Config for: undotree
+time([[Config for undotree]], true)
+try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20config.undotree\frequire\0", "config", "undotree")
+time([[Config for undotree]], false)
+-- Config for: emmet-vim
+time([[Config for emmet-vim]], true)
+
+time([[Config for emmet-vim]], false)
 -- Config for: oil.nvim
 time([[Config for oil.nvim]], true)
 try_loadstring("\27LJ\2\n*\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\15config.oil\frequire\0", "config", "oil.nvim")
@@ -269,10 +283,6 @@ time([[Config for oil.nvim]], false)
 time([[Config for gruvbox-material]], true)
 try_loadstring("\27LJ\2\n×\2\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0·\2        if has('termguicolors')\n          set termguicolors\n        endif\n\n        set background=dark\n\n        let g:gruvbox_material_background = 'soft'\n        let g:gruvbox_material_foreground = 'material'\n        let g:gruvbox_material_better_performance=1\n\n        colorscheme gruvbox-material\n      \bcmd\bvim\0", "config", "gruvbox-material")
 time([[Config for gruvbox-material]], false)
--- Config for: fzf-lua
-time([[Config for fzf-lua]], true)
-try_loadstring("\27LJ\2\n*\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\15config.fzf\frequire\0", "config", "fzf-lua")
-time([[Config for fzf-lua]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)

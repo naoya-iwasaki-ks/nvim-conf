@@ -17,6 +17,10 @@ vim.cmd([[
 
   set number relativenumber
 
+  " undo
+  set undofile
+  set undodir=~/.vim/undo
+
   " no backup
   set nobackup
   set nowritebackup
