@@ -135,6 +135,11 @@ require("packer").startup(function()
   }
 
   use {
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+  }
+
+  use {
     "mattn/emmet-vim",
     config = vim.cmd([[
       imap <C-e> <Plug>(emmet-expand-abbr)
