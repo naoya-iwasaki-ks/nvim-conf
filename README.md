@@ -2,5 +2,3 @@
 
 ## TODO
 
-- [] Replace Packer w/ Lazy
-
