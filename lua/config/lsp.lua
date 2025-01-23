@@ -2,6 +2,7 @@
 
 local luasnip = require('luasnip')
 local cmp = require("cmp")
+local lspconfig = require('lspconfig')
 
 require('mason').setup()
 require('mason-lspconfig').setup_handlers({
@@ -17,9 +18,12 @@ require('mason-lspconfig').setup_handlers({
       --   vim.lsp.protocol.make_client_capabilities()
       -- )
     }
-    require('lspconfig')[server].setup(opt)
+    lspconfig[server].setup(opt)
   end,
 })
+
+-- gleam settings
+-- require('config.lsp.gleam')
 
 vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
 vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')

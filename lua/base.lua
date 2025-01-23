@@ -66,7 +66,7 @@ vim.cmd([[
   syntax enable
 
   " vue sucks w/ the context_filetype
-  autocmd FileType vue syntax sync fromstart
+  " autocmd FileType vue syntax sync fromstart
 
   " silent! autocmd! filetypedetect BufRead,BufNewFile *.tf
   " autocmd BufRead,BufNewFile *.hcl set filetype=hcl
