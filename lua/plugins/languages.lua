@@ -1,8 +1,8 @@
 return {
-  {
-    "styled-components/vim-styled-components",
-    branch = "main"
-  },
+  -- {
+  --   "styled-components/vim-styled-components",
+  --   branch = "main"
+  -- },
   {
     "vinnymeller/swagger-preview.nvim",
     run = "npm install -g swagger-ui-watcher",
@@ -16,10 +16,8 @@ return {
   },
   {
     "mattn/emmet-vim",
-    config = function() 
-      vim.cmd([[
-        imap <C-e> <Plug>(emmet-expand-abbr)
-      ]])
+    config = function()
+      vim.api.nvim_set_keymap('i', '<C-e>', "<Plug>(emmet-expand-abbr)", { noremap = true, silent = true })
     end
   }
 }

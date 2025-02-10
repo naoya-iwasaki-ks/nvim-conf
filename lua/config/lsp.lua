@@ -44,6 +44,8 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   }
 )
 
+vim.lsp.set_log_level("off")
+
 vim.cmd([[
   set updatetime=500
   highlight LspReferenceText  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
@@ -64,12 +66,12 @@ cmp.setup({
     end
   },
   sources = {
+    { name = "copilot",     group_index = 2 },
     { name = "luasnip",     group_index = 2 },
     { name = "cmp_tabnine", group_index = 2 },
     { name = "nvim_lsp",    group_index = 2 },
     { name = "buffer",      group_index = 2 },
     { name = "path",        group_index = 2 },
-    { name = "copilot",     group_index = 2 },
   },
   mapping = cmp.mapping.preset.insert({
     ['<Tab>'] = cmp.mapping(function(fallback)

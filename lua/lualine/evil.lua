@@ -187,12 +187,18 @@ ins_left {
     end
     return msg
   end,
-  icon = ' LSP:',
+  icon = '󱚥 ',
+  color = { fg = colors.fg },
+}
+
+ins_right {
+  'codecompanion',
+  icon = ' ',
   color = { fg = colors.fg },
 }
 
 ins_both_right {
-  'filetype',       -- option component same as &encoding in viml
+  'filetype', -- option component same as &encoding in viml
   cond = conditions.hide_in_width,
   color = { fg = colors.darkblue },
 }

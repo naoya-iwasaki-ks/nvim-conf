@@ -3,5 +3,10 @@ return {
   config = function()
     require('config.oil')
   end,
-  dependencies = { { "echasnovski/mini.icons", opts = {} } },
+  dependencies = {
+    {
+      "echasnovski/mini.icons",
+      opts = {}
+    }
+  },
 }
