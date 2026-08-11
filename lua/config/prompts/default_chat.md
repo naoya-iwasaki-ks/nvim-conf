@@ -1,14 +1,14 @@
 ---
-name: Generate the function
+name: Default session
 interaction: chat
-description: Implement the function
+description: Default session for code companion
 opts:
   modes:
     - v
-  alias: generate_function
+  alias: default_chat
   auto_submit: true
   stop_context_insertion: true
-  user_prompt: false
+  user_prompt: true
   is_workflow: true
 ---
 
@@ -22,5 +22,4 @@ Load the file content before deal with the user prompt.
 /caveman full
 #{buffer}
 
-Implement this function content.
 

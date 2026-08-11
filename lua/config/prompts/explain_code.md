@@ -1,11 +1,11 @@
 ---
-name: Generate the function
+name: Explain code
 interaction: chat
-description: Implement the function
+description: Explain the code selected
 opts:
   modes:
     - v
-  alias: generate_function
+  alias: explain_code
   auto_submit: true
   stop_context_insertion: true
   user_prompt: false
@@ -22,5 +22,7 @@ Load the file content before deal with the user prompt.
 /caveman full
 #{buffer}
 
-Implement this function content.
+Could you explain the code?
 
+- Why is this needed.
+- What this code does.

@@ -18,6 +18,8 @@ require('nvim-treesitter').setup {
     },
   },
 
+  ensure_installed = { "diff" },
+
   indent = {
     enable = true,
   }

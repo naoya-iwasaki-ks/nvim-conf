@@ -9,7 +9,6 @@ require("conform").setup({
     typescriptreact = { "prettierd" },
     jsonc = { "prettierd" },
     terraform = { "terraform-ls" },
-    rust = { "rustfmt", lsp_format = "fallback" },
   },
   formatters = {},
 })

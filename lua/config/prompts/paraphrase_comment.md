@@ -1,13 +1,13 @@
 ---
-name: Generate the function
-interaction: chat
-description: Implement the function
+name: Paraphrase content
+interaction: inline
+description: Paraphrase the variable/function name or the comment.
 opts:
   modes:
     - v
-  alias: generate_function
+  alias: paraphrase_content
   auto_submit: true
-  stop_context_insertion: true
+  stop_context_insertion: false
   user_prompt: false
   is_workflow: true
 ---
@@ -22,5 +22,5 @@ Load the file content before deal with the user prompt.
 /caveman full
 #{buffer}
 
-Implement this function content.
+Paraphrase the variable/function name or the comment (based on the content given) in the sophisticated way.
 

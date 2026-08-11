@@ -20,6 +20,7 @@ Load the file content before deal with the user prompt.
 ## user
 
 /caveman full
+#{buffer}
 
 This code in the file causes the compilation error. Find the culpit and fix the issue.
 

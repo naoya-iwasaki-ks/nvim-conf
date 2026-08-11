@@ -15,16 +15,16 @@ return {
       require('copilot_cmp').setup()
     end
   },
-  {
-    "ravitemer/mcphub.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    build = "npm install -g mcp-hub@latest",
-    config = function()
-      require('config.mcphub')
-    end
-  },
+  -- {
+  --   "ravitemer/mcphub.nvim",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --   },
+  --   build = "npm install -g mcp-hub@latest",
+  --   config = function()
+  --     require('config.mcphub')
+  --   end
+  -- },
   {
     "olimorris/codecompanion.nvim",
     after = { "mcphub.nvim" },
