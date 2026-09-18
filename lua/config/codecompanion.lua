@@ -65,6 +65,29 @@ codecompanion.setup({
           env = {
             CLAUDE_CODE_OAUTH_TOKEN = token,
           },
+          handlers = {
+            form_messages = function(self, messages, capabilities)
+              local helpers = require("codecompanion.adapters.acp.helpers")
+
+              local result = helpers.form_messages(self, messages, capabilities)
+
+              if not self._system_injected then
+                local system_parts = {}
+                for _, msg in ipairs(messages) do
+                  if msg.role == "system" and msg.content and msg.content ~= "" then
+                    table.insert(system_parts, msg.content)
+                  end
+                end
+
+                if #system_parts > 0 and #result > 0 then
+                  result[1].text = table.concat(system_parts, "\n\n") .. "\n\n" .. result[1].text
+                  self._system_injected = true
+                end
+              end
+
+              return result
+            end,
+          },
         })
       end,
     },
